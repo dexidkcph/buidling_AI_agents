@@ -1,5 +1,6 @@
 AIHero – Binance Docs Chunking & Search (RAG Foundation)
-📌 Overview
+
+Overview
 
 This project builds the foundation of a Retrieval-Augmented Generation (RAG) system using Binance API documentation.
 
