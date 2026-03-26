@@ -143,8 +143,8 @@ def hybrid_search(query, num_results=5):
 ```text
 aihero/
   ├── project/
-  │     ├── day2_chunking.ipynb
-  │     ├── day3_search.ipynb
+  │     ├── binance.ipynb
+  │     ├── index.ipynb
   │     ├── my_chunks_sections.json
   │     └── README.md
 ```
