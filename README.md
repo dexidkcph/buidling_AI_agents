@@ -8,7 +8,7 @@ The goal is to transform raw documentation into a system that can:
 retrieve relevant information
 support AI agents
 answer technical API questions
-📂 Data Pipeline
+Data Pipeline
 Step 1 – Load Documentation
 Source: Binance API docs (GitHub)
 Markdown files parsed into structured format
@@ -28,7 +28,7 @@ Example chunk:
   "filename": "..."
 }
 
-👉 Insight:
+Insight:
 
 Section chunks = better context
 Small chunks = higher recall but more noise
@@ -44,7 +44,7 @@ text_index.fit(binance_docs)
 keyword-based matching
 fast and interpretable
 
-👉 Strong for:
+Strong for:
 
 exact API terms (recvWindow, timestamp, endpoints)
 2. Vector Search (Embeddings)
@@ -62,23 +62,23 @@ def hybrid_search(query):
 combines both approaches
 removes duplicates
 
-👉 Most robust overall
+Most robust overall
 
-🧪 Example Queries
+Example Queries
 How do I sign a Binance Spot API request?
 What does recvWindow mean?
 Why am I getting timestamp error?
 How do I place a market order?
-📊 Key Findings
+Key Findings
 Text search performs surprisingly well due to structured API terminology
 Vector search improves recall for natural language queries
 Hybrid search gives the best balance
 
-👉 Conclusion:
+Conclusion:
 
 Start simple (text search), add hybrid if needed
 
-🧠 What I Learned
+What I Learned
 Retrieval quality depends more on chunking and structure than models
 Fancy AI ≠ better results
 Debugging data flow (not models) is the real challenge
@@ -88,14 +88,14 @@ MinSearch
 Sentence Transformers
 NumPy
 Jupyter Notebook
-📁 Project Structure
+Project Structure
 aihero/
   ├── project/
   │     ├── day2_chunking.ipynb
   │     ├── day3_search.ipynb
   │     ├── my_chunks_sections.json
   │     └── README.md
-🚀 Next Step
+Next Step
 Connect retrieval to LLM
 Build full RAG pipeline
 Turn into AI agent for Binance API assistance
