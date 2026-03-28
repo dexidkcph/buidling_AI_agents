@@ -25,7 +25,7 @@ Instead of relying on a general LLM, the system:
 
 ## Architecture
 User → Streamlit UI → Agent → search_docs() → Hybrid Search
-↙ ↘
+↓
 Text Search Vector Search
 ↓
 Retrieved Chunks
@@ -33,7 +33,7 @@ Retrieved Chunks
 LLM Response
 
 User → Streamlit UI → Agent → search_docs() → Hybrid Search
-↙ ↘
+↓
 Text Search Vector Search
 ↓
 Retrieved Chunks
@@ -77,10 +77,15 @@ Returns the most relevant documentation chunks.
 ## Project Structure
 app/
 ├── ingest.py # load + embedding pipeline
+
 ├── search_tools.py # text, vector, hybrid search
+
 ├── search_agent.py # agent + prompt
+
 ├── logs.py # interaction logging
+
 ├── main.py # CLI interface
+
 ├── app.py # Streamlit UI
 
 
