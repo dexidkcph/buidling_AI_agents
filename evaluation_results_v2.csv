@@ -1,0 +1,182 @@
+file,agent_name,agent_version,source,question,answer,instructions_follow,answer_relevant,answer_clear,answer_citations,completeness,tool_call_search
+binance_agent_v2_20260328_013447_bc8e7f.json,binance_agent_v2,v2,user,How do I check exchange information?,"To check exchange information on Binance, you can use the relevant API endpoints provided in their documentation. Specifically, the exchange information includes details like supported trading pairs, order types, filters, and limits.
+
+### Key Parameters:
+- The API endpoint you would typically use is `GET /api/v3/exchangeInfo`.
+- This endpoint returns data on trading pairs, including their status, filters, and other relevant details.
+
+### Authentication:
+- Depending on the specifics of your request, you may need to include a valid API key for authenticated endpoints.
+
+For more details, you may refer to the corresponding section in the Binance API documentation if you need exact endpoint usage: typically found under exchange information or market data sections. Unfortunately, specific details on retrieving exchange information weren't retrieved directly in the search results, but you can find this information in the comprehensive API docs.",True,True,True,False,False,True
+binance_agent_v2_20260328_013342_d5c32d.json,binance_agent_v2,v2,user,How do I place a market order?,"To place a market order on Binance via the API, you can follow the steps below. 
+
+### Direct Approach:
+1. **Endpoint:** Use the `POST /api/v3/order` endpoint.
+2. **Parameters:**
+   - **symbol:** Required (string) - Specify the trading pair (e.g., `BTCUSDT`).
+   - **side:** Required (enum) - Must be `BUY` or `SELL`.
+   - **type:** Required (enum) - Set to `MARKET`.
+   - **quantity:** Required (decimal) - The amount of the asset you want to buy/sell. You can alternatively specify `quoteOrderQty` (amount in quote currency) instead of `quantity`, but not both.
+3. **Optional Parameters:** Additional parameters may include `newClientOrderId`, `timeInForce`, and `selfTradePreventionMode`.
+4. **Authentication:** You need to sign the request with a valid API key, and include a `timestamp` parameter.
+
+### Example of a Request:
+Here’s a JSON body example for a market buy order of `0.5 BTC`:
+```json
+{
+  ""symbol"": ""BTCUSDT"",
+  ""side"": ""BUY"",
+  ""type"": ""MARKET"",
+  ""quantity"": ""0.5"",
+  ""timestamp"": ""YOUR_CURRENT_TIMESTAMP""
+}
+```
+
+### Authentication Note:
+- Each API request must include a valid API key in the `X-MBX-APIKEY` header.
+- The request must also be signed with the proper signature based on your API key.
+
+### Rate Limits:
+Be aware of the API’s rate limits when making requests. Keep track of the `weight` assigned to each request to avoid hitting rate limits.
+
+For detailed implementation, refer to [the Binance API documentation on Orders](https://binance-docs.github.io/apidocs/spot/en/#new-order).
+
+**Cited From:** General Endpoints and Trading Endpoints sections from the Binance API documentation (filename: 'binance-spot-api-docs-master/rest-api.md').",True,True,True,True,True,True
+binance_agent_v2_20260328_013441_4159f5.json,binance_agent_v2,v2,user,What parameters are needed to create an order?,"To create an order on Binance, the following parameters are required:
+
+### Mandatory Parameters
+1. **symbol**: The trading pair to trade (e.g., ""BTCUSDT"").
+2. **side**: The side of the order, which can be either ""BUY"" or ""SELL"".
+3. **type**: The order type (e.g., ""LIMIT"", ""MARKET"").
+4. **timestamp**: Current time in milliseconds since epoch (mandatory for signing the request).
+
+### Optional Parameters
+1. **timeInForce**: This parameter is only mandatory for LIMIT orders. Possible values are ""GTC"" (Good Till Canceled), ""IOC"" (Immediate or Cancel), and ""FOK"" (Fill or Kill).
+2. **quantity**: The amount of the asset to buy/sell.
+3. **price**: Price for the order (mandatory for LIMIT orders).
+4. **newClientOrderId**: An optional unique identifier for the order.
+5. **stopPrice**: Required for stop-limit and stop loss orders.
+6. **icebergQty**: This creates an iceberg order specified as a quantity visible to the exchange.
+7. **quoteOrderQty**: The amount to spend or receive in the quote asset.
+8. **newOrderRespType**: Determines the response format (ACK, RESULT, FULL).
+
+### Authentication/Signing Requirements
+- The request must be signed using your API secret. The signature is computed based on the request parameters, excluding the `signature` field itself.
+- You must include the `timestamp` parameter, which should match the server’s time within a reasonable window specified by `recvWindow` (default is 5000ms).
+
+For additional details, you can reference the ""New Order (TRADE)"" section in the Binance API documentation (filename: `rest-api.md`, section: ""### New order (TRADE)"").",True,True,True,True,True,True
+binance_agent_v2_20260328_013552_b47ac4.json,binance_agent_v2,v2,user,How do I get account balances?,"To get your account balances on Binance, you can use the following REST API endpoint:
+
+**Endpoint:**
+```
+GET /api/v3/account
+```
+
+### Important Parameters:
+- **symbol**: (Optional) If you want to get data for a specific symbol.
+- **omitZeroBalances**: (Optional) If set to `true`, it will hide all assets with zero balances.
+
+### Authentication Requirements:
+- This endpoint requires an API key and must be signed. You will need to set up your headers to include your API key and a signature.
+
+### Example of Response:
+The response will include details about your account such as:
+- `balances`: This is an array containing objects that provide information about each asset, including `asset`, `free` (amount available for trading), and `locked` (amount that is currently locked).
+  
+Example response structure:
+```json
+{
+    ""makerCommission"": 15,
+    ""takerCommission"": 15,
+    ""buyerCommission"": 0,
+    ""sellerCommission"": 0,
+    ""canTrade"": true,
+    ""canWithdraw"": true,
+    ""canDeposit"": true,
+    ""updateTime"": 1568900723076,
+    ""accountType"": ""SPOT"",
+    ""balances"": [
+        {
+            ""asset"": ""BTC"",
+            ""free"": ""0.001"",
+            ""locked"": ""0.000""
+        },
+        {
+            ""asset"": ""ETH"",
+            ""free"": ""0.000"",
+            ""locked"": ""0.000""
+        }
+    ]
+}
+```
+
+### Documentation Reference:
+For more details, please refer to the Binance API documentation under the section for account information: [Account Information](https://developers.binance.com/docs/binance-spot-api-docs/reference/account/account).
+
+Additionally, make sure that your API key has the required permissions enabled to access account data.",True,True,True,True,True,True
+binance_agent_v2_20260328_013309_443f93.json,binance_agent_v2,v2,user,How do I authenticate API requests?,"To authenticate API requests on Binance, you will primarily need to use the following methods:
+
+1. **API Key and Signature**: Most API requests that require authentication must include an `apiKey` and a `signature`. The `signature` is generated by HMAC SHA256 signing the query string with your secret key.
+   
+   - Important parameters:
+     - `apiKey`: Your unique API key.
+     - `timestamp`: The timestamp of the request (in milliseconds).
+     - `signature`: The computed signature as per your secret key.
+
+2. **Using Session Authentication for WebSocket**: You can authenticate your API key for active WebSocket sessions, which allows you to avoid specifying `apiKey` and `signature` in each individual request after the initial login.
+
+   - Required requests for session authentication:
+     - `session.logon`: Used to authenticate your API key.
+     - You will still need to send the `timestamp` parameter for signed requests.
+
+   Here’s an example of the `session.logon` request:
+
+   ```json
+   {
+       ""id"": ""your-id"",
+       ""method"": ""session.logon"",
+       ""params"": {
+           ""apiKey"": ""your-api-key"",
+           ""signature"": ""your-signature"",
+           ""timestamp"": 1649729878532
+       }
+   }
+   ```
+
+   After successfully logging in, you can omit the `apiKey` and `signature` in subsequent requests until you log out or your session expires.
+
+### Authentication Requirements
+- **Authentication Type**: Must include `apiKey` and `signature` for each signed request.
+- **Session Management**: For sessions, proper handling of `session.logon`, `session.status`, and `session.logout` is necessary.
+- **Signature Generation**: Ensure to generate the signature properly, using your secret key with the respective API request parameters.
+
+### Documentation Reference
+- The information is sourced from the WebSocket API documentation (sections on Session Authentication and Authentication requests) in the Binance API documentation provided [here](https://github.com/binance/binance-spot-api-docs/blob/master/web-socket-api.md).",True,True,True,True,True,True
+binance_agent_v2_20260328_013506_600f09.json,binance_agent_v2,v2,user,What are Binance API rate limits?,"Binance API has defined rate limits to manage overall traffic and ensure optimal performance. Here are the key aspects:
+
+1. **Connection Limits**: 
+   - There is a limit of **300 connections per attempt every 5 minutes** for each IP address.
+
+2. **Rate Limit Types**:
+   - Various rate limit types exist, including `REQUEST_WEIGHT` and `ORDERS`. You can query the current limits using the `exchangeInfo` request.
+
+3. **General Rate Limit Rules**:
+   - Requests can fail with a status code `429` if rate limits are exceeded.
+   - Responses may include a `rateLimits` field detailing the usage and limits.
+   - The rate limit intervals can be per second, minute, hour, or day.
+
+4. **Weightage for Requests**:
+   - Each API request has an associated weight, which is summed up per IP address. 
+   - If the weight limit is exceeded, requests will again fail with a status `429`.
+
+5. **Unfilled Order Count**:
+   - There are also limits on the number of unfilled orders you can place. Exceeding these can lead to a `429` status as well.
+
+6. **IP Banning**:
+   - Repeated violations of requests can lead to an automated IP ban, which lasts from 2 minutes to 3 days based on the severity of the offense.
+
+7. **Necessary Authentication**:
+   - Authentication might be required for certain endpoints depending on the API keys used.
+
+For a comprehensive understanding, you may refer to the Binance API documentation, specifically the section on [Rate Limits](https://binance-docs.github.io/apidocs/spot/en/#limits) (found in binance-spot-api-docs-master/web-socket-api.md).",True,True,True,True,True,True
