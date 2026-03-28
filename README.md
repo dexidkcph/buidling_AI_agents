@@ -6,13 +6,13 @@ This project evolves from raw documentation → structured retrieval → intelli
 
 ---
 
-## 🚀 Live App
+## Live App
 
-👉 https://binance-docs-agent.streamlit.app/
+https://binance-docs-agent.streamlit.app/
 
 ---
 
-## 🧠 Overview
+## Overview
 
 This system allows users to ask questions about Binance API and get **grounded, accurate answers** based on official documentation.
 
@@ -23,7 +23,7 @@ Instead of relying on a general LLM, the system:
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 User → Streamlit UI → Agent → search_docs() → Hybrid Search
 ↙ ↘
 Text Search Vector Search
@@ -43,7 +43,7 @@ LLM Response
 
 ---
 
-## ⚙️ Core Components
+## Core Components
 
 ### 1. Data Ingestion
 - Loads Binance API documentation (markdown)
@@ -74,7 +74,7 @@ Returns the most relevant documentation chunks.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 app/
 ├── ingest.py # load + embedding pipeline
 ├── search_tools.py # text, vector, hybrid search
@@ -86,7 +86,7 @@ app/
 
 ---
 
-## ▶️ Run Locally
+## Run Locally
 
 ### 1. Install dependencies
 
@@ -114,7 +114,7 @@ uv run python app/main.py
 uv run streamlit run app/app.py
 ```
 
-## 🧪 Example Questions
+## Example Questions
 
 - How do I authenticate private endpoints?
 - What is recvWindow used for?
@@ -123,7 +123,7 @@ uv run streamlit run app/app.py
 
 ---
 
-## ⚠️ Challenges & Fixes
+## Challenges & Fixes
 
 - **Path issues**  
   → Fixed using `Path(__file__)` instead of relative paths  
@@ -139,7 +139,7 @@ uv run streamlit run app/app.py
 
 ---
 
-## 📌 Key Takeaways
+## Key Takeaways
 
 - Retrieval is more reliable than prompting alone  
 - Hybrid search improves answer quality  
