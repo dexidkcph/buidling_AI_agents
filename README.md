@@ -19,6 +19,8 @@ This project solves that by combining:
 
 The agent always retrieves relevant documentation before answering.
 
+Live app at Streamlit: https://binance-docs-agent.streamlit.app/
+
 ---
 
 ## Demo
