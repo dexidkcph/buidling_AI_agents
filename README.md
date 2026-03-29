@@ -188,6 +188,104 @@ The evaluation is performed in two stages:
 
 ---
 
+## Project Structure
+
+This project is organized into modular components covering data ingestion, retrieval, agent logic, UI, and evaluation.
+
+### Core Application
+
+- `app/app.py`  
+  Streamlit-based web interface for interacting with the AI agent  
+  - Chat-style UI  
+  - Displays responses from the agent  
+  - Uses caching for performance  
+
+---
+
+### Data Pipeline
+
+- `ingest.py` *(or your ingestion notebook/script)*  
+  Handles loading and preprocessing of Binance API documentation  
+  - Parses Markdown files  
+  - Splits into structured sections  
+  - Prepares data for embedding  
+
+- `chunking logic` *(within your pipeline)*  
+  - Section-based chunking  
+  - Preserves context for better retrieval  
+
+---
+
+### Retrieval System
+
+- `search.py` / `hybrid_search()`  
+  Implements hybrid retrieval:
+  - Text search (keyword matching)  
+  - Vector search (semantic similarity using embeddings)  
+  - Combines and ranks results  
+
+- `binance_embeddings/`  
+  Stores vector embeddings for semantic search  
+
+---
+
+### Agent
+
+- `agent.py` *(or equivalent)*  
+  Defines the AI agent using Pydantic AI  
+  - Uses `search_docs(query)` as a tool  
+  - Enforces retrieval before answering  
+  - Prevents hallucination  
+
+---
+
+### Evaluation
+
+- `eval/data-gen.ipynb`  
+  Generates synthetic evaluation questions  
+
+- `eval/evaluations.ipynb`  
+  Runs evaluation pipeline and computes metrics  
+
+---
+
+### Logs / Debugging *(if applicable)*
+
+- Logs responses and agent behavior for debugging and analysis  
+
+---
+
+## Deployment
+
+### Local Run
+
+```bash
+uv run streamlit run app/app.py
+```
+
+### Streamlit Cloud Deployment
+
+1. Export dependencies:
+
+```bash
+uv export > requirements.txt
+```
+
+2. Push to GitHub
+
+3. Go to Streamlit Cloud and deploy your repo
+
+4. Set environment variable:
+
+```
+OPENAI_API_KEY=your_key
+```
+
+5. App will auto-deploy on every push
+
+---
+
+
 ### Key Insights
 
 - The agent performs strongly on **relevance and correctness** (`100%`)
@@ -264,6 +362,14 @@ However, evaluation reveals that **retrieval alone is not enough** — answer sy
 Deheng Xie
 
 ---
+
+## Credits / Acknowledgments
+
+- [DataTalksClub](https://github.com/DataTalksClub) for open-source course materials  
+- [Alexey Grigorev](https://www.linkedin.com/in/agrigorev) for the [AI Agents Crash Course](https://alexeygrigorev.com/aihero/)  
+- SentenceTransformers for embeddings  
+- Streamlit for UI  
+- Pydantic AI for agent framework
 
 ## License
 
