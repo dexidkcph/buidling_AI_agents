@@ -123,20 +123,29 @@ git clone https://github.com/dexidkcph/buidling_AI_agents.git
 cd buidling_AI_agents 
 
 Install dependencies:
-uv sync  
+```bash
+uv sync
+```
 
 Set environment variables:
-OPENAI_API_KEY=your_key  
+```bash
+OPENAI_API_KEY=your_key 
+```
 
 ---
 
 ## Usage
 
 Run Streamlit App:
-streamlit run app/app.py  
+```bash
+uv run streamlit run app/app.py
+```
 
 Example Query:
+```bash
 What is recvWindow in Binance API?
+```
+
 
 ---
 
@@ -204,13 +213,13 @@ This project is organized into modular components covering data ingestion, retri
 
 ### Data Pipeline
 
-- `ingest.py` *(or your ingestion notebook/script)*  
+- `ingest.py`
   Handles loading and preprocessing of Binance API documentation  
   - Parses Markdown files  
   - Splits into structured sections  
   - Prepares data for embedding  
 
-- `chunking logic` *(within your pipeline)*  
+- `chunking logic` 
   - Section-based chunking  
   - Preserves context for better retrieval  
 
