@@ -12,6 +12,9 @@ from logs import log_interaction_to_file
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(PROJECT_ROOT / ".env")
 
+if "OPENAI_API_KEY" not in os.environ and "OPENAI_API_KEY" in st.secrets:
+    os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+
 JSON_PATH = PROJECT_ROOT / "my_chunks_sections.json"
 
 
@@ -56,9 +59,14 @@ if prompt := st.chat_input("Ask your question..."):
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response = asyncio.run(agent.run(user_prompt=prompt))
-            answer = response.output
-            st.markdown(answer)
+            try:
+                response = asyncio.run(agent.run(user_prompt=prompt))
+                answer = response.output
+                st.markdown(answer)
 
-    st.session_state.messages.append({"role": "assistant", "content": answer})
-    log_interaction_to_file(agent, response.new_messages())
+                st.session_state.messages.append({"role": "assistant", "content": answer})
+                log_interaction_to_file(agent, response.new_messages())
+
+            except Exception as e:
+                st.error(f"Error: {type(e).__name__}: {e}")
+                raise
