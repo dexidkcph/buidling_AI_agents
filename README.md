@@ -29,7 +29,9 @@ Live app at Streamlit: https://binance-docs-agent.streamlit.app/
 
 This demo shows the agent diagnosing a real Binance API error using retrieval and tool-based reasoning.
 
-[![Watch the demo](https://cdn.loom.com/sessions/thumbnails/796f6995b3a64ec5b1ea8c9a1a0ca688-with-play.gif)](https://www.loom.com/share/796f6995b3a64ec5b1ea8c9a1a0ca688)
+<a href="https://www.loom.com/share/796f6995b3a64ec5b1ea8c9a1a0ca688">
+  <img src="images/demo.png" width="700">
+</a>
 
 ---
 
@@ -47,13 +49,24 @@ How do I authenticate a signed request on Binance API, what parameters are requi
 
 ### CLI Demo
 
-![CLI Demo](images/cli.gif)
+```bash
+uv run main.py
+```
+
+This opens an interactive CLI environment. You can ask the conversational agent any question about Binance.
+
+<p align="left">
+  <img src="images/cli.gif" width="700">
+</p>
+Type `stop` to exit
 
 ---
 
 ### Streamlit App Demo
 
-![Streamlit Demo](images/streamlit.gif)
+<p align="left">
+  <img src="images/streamlit.gif" width="700">
+</p>
 
 ---
 
@@ -127,20 +140,86 @@ What is recvWindow in Binance API?
 
 ---
 
-## Evaluation
+## Evaluations
 
-We tested:
-- Retrieval accuracy
-- Answer correctness
-- Grounding quality
+Evaluation is a critical component of this project to ensure the agent produces grounded and reliable answers.
 
-Results:
+### Evaluation Criteria
 
-Version | Accuracy | Hallucination  
-v1     | Medium  | High  
-v2     | High    | Low  
+We evaluate the agent across the following dimensions:
+
+- `instructions_follow` – The agent follows the user's request
+- `instructions_avoid` – The agent avoids restricted or irrelevant actions
+- `answer_relevant` – The response directly answers the question
+- `answer_clear` – The response is clear and understandable
+- `answer_citations` – The answer is grounded in retrieved documentation
+- `completeness` – The response covers all important aspects
+- `tool_call_search` – The agent correctly uses the retrieval tool
 
 ---
+
+### Evaluation Pipeline
+
+The evaluation is performed in two stages:
+
+1. **Synthetic Data Generation**
+   - Questions are generated to simulate real user queries
+   - Covers authentication, errors, parameters, and order placement
+   - See: `eval/data-gen.ipynb`
+
+2. **Agent Evaluation**
+   - The agent answers each question
+   - Responses are scored across all criteria
+   - See: `eval/evaluations.ipynb`
+
+---
+
+### Results
+
+| Metric               | Score (%) |
+|---------------------|----------|
+| instructions_follow | 100      |
+| instructions_avoid  | 100      |
+| answer_relevant     | 100      |
+| answer_clear        | 100      |
+| answer_citations    | 100      |
+| completeness        | 70       |
+| tool_call_search    | 100      |
+
+---
+
+### Key Insights
+
+- The agent performs strongly on **relevance and correctness** (`100%`)
+- Retrieval grounding is effective (`answer_citations = 100%`)
+- Tool usage is reliable (`tool_call_search = 100%`)
+
+However:
+
+- `completeness` is lower (70%), indicating that:
+  - Some answers miss edge cases or deeper explanations
+  - The agent may retrieve correct context but not fully synthesize it
+
+---
+
+### Improvements
+
+- Increase evaluation dataset size (currently limited to ~10 questions)
+- Add more complex, multi-step queries (e.g. debugging API errors)
+- Introduce adversarial questions to test robustness
+- Improve answer synthesis to increase completeness
+
+---
+
+### Key Takeaway
+
+Retrieval + tool-based agents significantly outperform prompt-only approaches in:
+
+- Accuracy
+- Reliability
+- Grounding
+
+However, evaluation reveals that **retrieval alone is not enough** — answer synthesis remains a key challenge.
 
 ## Challenges & Fixes
 
