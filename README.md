@@ -27,11 +27,15 @@ Live app at Streamlit: https://binance-docs-agent.streamlit.app/
 
 ### Main Demo (Agent in Action)
 
-https://www.loom.com/share/YOUR_VIDEO_LINK
+This demo shows the agent diagnosing a real Binance API error using retrieval and tool-based reasoning.
+
+[![Watch the demo](https://cdn.loom.com/sessions/thumbnails/796f6995b3a64ec5b1ea8c9a1a0ca688-with-play.gif)](https://www.loom.com/share/796f6995b3a64ec5b1ea8c9a1a0ca688)
 
 **Demo Question:**
 
 I get a "timestamp for this request was 1000ms ahead of the server’s time" error when placing a signed order on Binance API — what causes it and how do I fix it?
+
+How do I authenticate a signed request on Binance API, what parameters are required (API key, signature, timestamp, recvWindow), and can you show a complete example of generating the signature?
 
 ---
 
