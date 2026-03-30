@@ -146,7 +146,14 @@ OPENAI_API_KEY=your_key
 
 ## Usage
 
-Run Streamlit App:
+### Run the CLI
+
+```bash
+uv run python main.py
+```
+
+### Run the Streamlit App
+
 ```bash
 uv run streamlit run app/app.py
 ```
