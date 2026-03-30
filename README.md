@@ -149,7 +149,7 @@ OPENAI_API_KEY=your_key
 ### Run the CLI
 
 ```bash
-uv run python main.py
+uv run python app/main.py
 ```
 
 ### Run the Streamlit App
