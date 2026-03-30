@@ -119,8 +119,18 @@ Combines:
 
 ## Installation
 
-git clone https://github.com/dexidkcph/buidling_AI_agents.git  
-cd buidling_AI_agents 
+
+```bash
+git clone 
+
+```
+https://github.com/dexidkcph/buidling_AI_agents.git  
+
+
+```bash
+cd buidling_AI_agents
+
+```
 
 Install dependencies:
 ```bash
