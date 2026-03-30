@@ -328,35 +328,6 @@ However:
 
 ---
 
-### Key Takeaway
-
-Retrieval + tool-based agents significantly outperform prompt-only approaches in:
-
-- Accuracy
-- Reliability
-- Grounding
-
-However, evaluation reveals that **retrieval alone is not enough** — answer synthesis remains a key challenge.
-
-## Challenges & Fixes
-
-- Hallucination → fixed with tool usage  
-- Retrieval quality → improved with hybrid search  
-- Environment → fixed with .env  
-- Performance → Streamlit caching  
-
----
-
-## Tech Stack
-
-- Python
-- Streamlit
-- SentenceTransformers
-- Pydantic AI
-- OpenAI API
-- uv
-
----
 
 ## What I Learned
 
