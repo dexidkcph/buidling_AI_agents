@@ -329,31 +329,23 @@ However:
 ---
 
 
-## What I Learned
+### What I Learned
 
 - Retrieval > prompting
 - Hybrid search improves quality
 - Agents need tools
 - Evaluation is critical
 
----
-
-## Future Improvements
-
-- Add real-time Binance API testing
-- Add reranking
-- Add memory
-- Deploy as API
 
 ---
 
-## Author
+### Author
 
 Deheng Xie
 
 ---
 
-## Credits / Acknowledgments
+### Credits / Acknowledgments
 
 - [DataTalksClub](https://github.com/DataTalksClub) for open-source course materials  
 - [Alexey Grigorev](https://www.linkedin.com/in/agrigorev) for the [AI Agents Crash Course](https://alexeygrigorev.com/aihero/)  
