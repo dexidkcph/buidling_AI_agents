@@ -83,11 +83,41 @@ Type `stop` to exit
 
 ## Project Architecture
 
-binance_docs/        # raw documentation  
-binance_embeddings/  # vector storage  
-app/                 # Streamlit app  
-agent/               # agent logic  
-eval/                # evaluation scripts  
+binance_docs/          # raw documentation  
+binance_embeddings/    # vector storage  
+app/                   # Streamlit app  
+agent/                 # agent logic  
+eval/                  # evaluation scripts  
+
+---
+
+## Project Structure
+
+app/ \
+├── app.py\
+├── main.py\
+├── ingest.py\
+├── search_tools.py\
+├── search_agent.py
+
+notebooks/ \
+├── index.ipynb\
+├── binance.ipynb\
+├── agenttest.ipynb
+
+experiments/ \
+├── evals.py\
+├── evaluation_results.csv
+
+data/ \
+├── my_chunks_sections.json
+
+logging_utils.py\
+pyproject.toml\
+uv.lock\
+requirements.txt\
+.python-version\
+README.md
 
 ---
 
