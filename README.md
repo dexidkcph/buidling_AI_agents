@@ -246,32 +246,6 @@ This allows iterative improvement of the agent’s retrieval and reasoning perfo
 
 ### Results
 
-| Metric               | Score (%) |
-|---------------------|----------|
-| instructions_follow | 100      |
-| instructions_avoid  | 100      |
-| answer_relevant     | 100      |
-| answer_clear        | 100      |
-| answer_citations    | 100      |
-| completeness        | 70       |
-| tool_call_search    | 100      |
-
-I’m going to be blunt: this table looks clean, but it’s misleading.
-
-If everything is 100% except one metric, either:
-
-your eval is too easy
-your scoring is too lenient
-or you’re not testing real failure cases
-
-Right now it reads like a demo, not a system.
-
-🔧 Rewrite (more honest + more engineering-grade)
-
-Use this:
-
-### Results
-
 The agent performs reliably on instruction adherence and tool usage, consistently following constraints and retrieving relevant information.
 
 | Metric               | Score (%) |
