@@ -66,7 +66,7 @@ if prompt := st.chat_input("Ask your question..."):
                 st.markdown(answer)
 
                 st.session_state.messages.append({"role": "assistant", "content": answer})
-                log_interaction_to_file(agent, response.new_messages())
+                log_interaction_to_file(agent, response.new_messages(), source="user", version="v3")
 
             except Exception as e:
                 st.error(f"Error: {type(e).__name__}: {e}")

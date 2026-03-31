@@ -55,7 +55,7 @@ def main():
         print(response.output)
         print("\n" + "=" * 60 + "\n")
 
-        log_interaction_to_file(agent, response.new_messages())
+        log_interaction_to_file(agent, response.new_messages(), source="user", version="v3")
 
 
 if __name__ == "__main__":

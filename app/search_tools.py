@@ -31,23 +31,29 @@ class SearchTool:
         top_indices = np.argsort(similarities)[::-1][:num_results]
         return [self.binance_docs[i] for i in top_indices]
 
-    def hybrid_search(self, query: str, num_results: int = 5):
+    def hybrid_search(self, query: str, num_results: int = 5, text_k: int = 10, vector_k: int = 10):
         """
-        Combine text and vector results, then deduplicate.
+        Combine text and vector results with simple score-based ranking.
         """
-        text_results = self.text_search(query, num_results=num_results)
-        vector_results = self.vector_search(query, num_results=num_results)
+        text_results = self.text_search(query, num_results=text_k)
+        vector_results = self.vector_search(query, num_results=vector_k)
 
-        seen_ids = set()
-        combined = []
+        scores = {}
 
-        for result in text_results + vector_results:
+        for rank, result in enumerate(text_results):
             result_id = result.get("id")
-            if result_id not in seen_ids:
-                seen_ids.add(result_id)
-                combined.append(result)
+            if result_id not in scores:
+                scores[result_id] = {"doc": result, "score": 0.0}
+            scores[result_id]["score"] += 1.0 / (rank + 1)
 
-        return combined[:num_results]
+        for rank, result in enumerate(vector_results):
+            result_id = result.get("id")
+            if result_id not in scores:
+                scores[result_id] = {"doc": result, "score": 0.0}
+            scores[result_id]["score"] += 1.0 / (rank + 1)
+
+        ranked = sorted(scores.values(), key=lambda x: x["score"], reverse=True)
+        return [x["doc"] for x in ranked[:num_results]]
 
     def format_results(self, results):
         """
