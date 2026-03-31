@@ -1,2 +1,19 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
 .env
+.venv/
+
+# OS
+.DS_Store
+
+# Logs (optional — decide if you want to keep logs)
 logs/
+
+# Large / optional experiment outputs
+# evaluation_results.csv
