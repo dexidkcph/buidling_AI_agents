@@ -1,0 +1,23 @@
+[project]
+name = "building-ai-agents"
+version = "0.1.0"
+description = "Streamlit app for building AI agents"
+requires-python = ">=3.12"
+dependencies = [
+  "streamlit",
+  "pandas",
+  "openai",
+  "pydantic-ai",
+  "sentence-transformers",
+  "scikit-learn",
+  "minsearch>=0.0.10",
+  "python-dotenv",
+  "numpy",
+]
+
+[tool.uv]
+package = false
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
