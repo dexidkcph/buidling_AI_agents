@@ -1,5 +1,9 @@
 streamlit
-openai
-sentence-transformers
-numpy
 pandas
+openai
+pydantic-ai
+sentence-transformers
+scikit-learn
+minsearch>=0.0.10
+python-dotenv
+numpy
