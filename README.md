@@ -28,6 +28,7 @@ Live app at Streamlit: https://binance-docs-agent.streamlit.app/ (temperary deac
 ### Main Demo (Agent in Action)
 
 This demo shows the agent diagnosing a real Binance API error using retrieval and tool-based reasoning.
+Click on picture to go to video.
 
 <a href="https://www.loom.com/share/796f6995b3a64ec5b1ea8c9a1a0ca688">
   <img src="images/demo.png" width="700">
