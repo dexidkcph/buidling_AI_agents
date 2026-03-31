@@ -1,0 +1,13 @@
+[project]
+name = "building-ai-agents"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "streamlit",
+  "python-dotenv",
+  "pydantic-ai",
+  "sentence-transformers",
+  "numpy",
+  "minsearch",
+  "openai"
+]
