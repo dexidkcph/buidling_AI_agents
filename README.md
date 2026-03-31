@@ -109,9 +109,7 @@ experiments/ \
 ├── evals.py\
 ├── evaluation_results.csv
 
-data/ \
-├── my_chunks_sections.json
-
+my_chunks_sections.json\
 logging_utils.py\
 pyproject.toml\
 uv.lock\
