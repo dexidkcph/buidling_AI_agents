@@ -103,9 +103,7 @@ app/ \
 notebooks/ \
 ├── index.ipynb\
 ├── binance.ipynb\
-├── agenttest.ipynb
-
-experiments/ \
+├── agenttest.ipynb\
 ├── evals.py\
 ├── evaluation_results.csv
 
