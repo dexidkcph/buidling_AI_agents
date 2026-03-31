@@ -1,10 +1,6 @@
 import json
-from pathlib import Path
 from pydantic import BaseModel
 from pydantic_ai import Agent
-
-BASE_DIR = Path(__file__).resolve().parent
-csv_path = BASE_DIR / "evaluation_results.csv"
 
 
 class EvaluationCheck(BaseModel):
@@ -39,7 +35,7 @@ Output true/false for each check and provide a short explanation.
 
 eval_agent = Agent(
     name="binance_eval_agent",
-    model="openai:gpt-4o-mini",
+    model="gpt-4o-mini",
     instructions=evaluation_prompt,
     output_type=EvaluationChecklist,
 )

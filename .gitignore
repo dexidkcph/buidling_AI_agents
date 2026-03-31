@@ -16,4 +16,6 @@ __pycache__/
 logs/
 
 # Large / optional experiment outputs
-# evaluation_results.csv
+evaluation_results.csv
+evaluation_results_v1.csv
+evaluation_results_v2.csv
