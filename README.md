@@ -1,6 +1,6 @@
-# Binance API AI Agent
+# Binance API DOC AI Agent
 
-An AI-powered agent that answers Binance API questions using retrieval, hybrid search, and tool-based reasoning.
+An AI-powered agent that answers Binance API DOC questions using retrieval, hybrid search, and tool-based reasoning.
 
 This project demonstrates how to build a production-style AI agent that is grounded in documentation instead of guessing.
 
