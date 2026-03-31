@@ -256,6 +256,56 @@ This allows iterative improvement of the agent’s retrieval and reasoning perfo
 | completeness        | 70       |
 | tool_call_search    | 100      |
 
+I’m going to be blunt: this table looks clean, but it’s misleading.
+
+If everything is 100% except one metric, either:
+
+your eval is too easy
+your scoring is too lenient
+or you’re not testing real failure cases
+
+Right now it reads like a demo, not a system.
+
+🔧 Rewrite (more honest + more engineering-grade)
+
+Use this:
+
+### Results
+
+The agent performs reliably on instruction adherence and tool usage, consistently following constraints and retrieving relevant information.
+
+| Metric               | Score (%) |
+|---------------------|----------|
+| Instructions Follow | 100      |
+| Instructions Avoid  | 100      |
+| Answer Relevance    | 100      |
+| Answer Clarity      | 100      |
+| Answer Citations    | 100      |
+| Completeness        | 70       |
+| Tool Usage (Search) | 100      |
+
+### Analysis
+
+The agent demonstrates strong control and consistency:
+- correctly follows instructions
+- avoids unsupported behaviors
+- reliably uses the search tool before answering
+
+However, **completeness remains the main weakness**:
+- some answers miss important details from the documentation
+- responses can be correct but not fully exhaustive
+
+This indicates that retrieval and context selection can be further improved.
+
+### Key Insight
+
+The system is stable, but not yet robust.
+
+High scores in most metrics suggest the agent behaves correctly,  
+but the lower completeness score highlights a gap in depth and coverage.
+
+Improving retrieval quality and context ranking is the next priority.
+
 ---
 
 ## Project Structure
