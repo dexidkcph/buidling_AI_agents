@@ -211,19 +211,36 @@ We evaluate the agent across the following dimensions:
 
 ---
 
-### Evaluation Pipeline
+## Evaluation Pipeline
 
-The evaluation is performed in two stages:
+The evaluation process is designed to test how well the agent answers real-world questions about the Binance API.
 
-1. **Synthetic Data Generation**
-   - Questions are generated to simulate real user queries
-   - Covers authentication, errors, parameters, and order placement
-   - See: `eval/data-gen.ipynb`
+### 1. Synthetic Data Generation
 
-2. **Agent Evaluation**
-   - The agent answers each question
-   - Responses are scored across all criteria
-   - See: `eval/evaluations.ipynb`
+A set of evaluation questions is created to simulate realistic user queries.
+
+These questions cover key areas such as:
+- authentication
+- error handling
+- parameters
+- order placement
+
+The questions are defined as a structured dataset and used as input for evaluation.
+
+### 2. Agent Evaluation
+
+The agent is run against each evaluation question.
+
+For each response:
+- the agent retrieves relevant documentation
+- generates an answer based on retrieved context
+
+The outputs are then reviewed and compared to assess:
+- correctness
+- completeness
+- grounding in source documentation
+
+This allows iterative improvement of the agent’s retrieval and reasoning performance.
 
 ---
 
